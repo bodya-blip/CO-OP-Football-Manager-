@@ -1,1 +1,96 @@
 
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Діаграма станів бота</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f0f2f5;
+        text-align: center;
+        padding: 20px;
+    }
+
+    h2 { color: #222; }
+
+    .diagram {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .state {
+        padding: 15px 30px;
+        border: 2px solid #222;
+        border-radius: 12px;
+        background: white;
+        min-width: 150px;
+        font-weight: bold;
+    }
+
+    .menu { background: #b9e6c5; }
+    .error { background: #ffbaba; }
+
+    .arrow {
+        font-size: 14px;
+        color: #333;
+    }
+
+    .branches {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .branch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+</style>
+</head>
+<body>
+
+<h2>CO-OP Football Manager</h2>
+<h3>Діаграма станів бота</h3>
+
+<div class="diagram">
+
+    <div class="state menu">МЕНЮ</div>
+
+    <div class="arrow">↓ /team, /transfer, /match</div>
+
+    <div class="branches">
+
+        <div class="branch">
+            <div class="state">СКЛАД</div>
+            <div class="arrow">↓ Назад / /start</div>
+            <div class="state menu">МЕНЮ</div>
+        </div>
+
+        <div class="branch">
+            <div class="state">ТРАНСФЕРИ</div>
+            <div class="arrow">↓ Невідомі дані</div>
+            <div class="state error">ПОМИЛКА</div>
+            <div class="arrow">↓ Повернутися</div>
+            <div class="state menu">МЕНЮ</div>
+        </div>
+
+        <div class="branch">
+            <div class="state">МАТЧ</div>
+            <div class="arrow">↓ Назад / /start</div>
+            <div class="state menu">МЕНЮ</div>
+        </div>
+
+    </div>
+</div>
+
+<p><b>Червоний блок</b> — стан, у якому бот може отримати несподівані дані.</p>
+
+</body>
+</html>
+
